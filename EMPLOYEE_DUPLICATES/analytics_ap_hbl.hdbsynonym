@@ -1,0 +1,38 @@
+{
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_CLAIM": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_CLAIM",
+      "schema": "ANALYTICSADMIN"
+    }
+  },
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_FOOD": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_FOOD",
+      "schema": "ANALYTICSADMIN"
+    }
+  },
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_HOTEL": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_HOTEL",
+      "schema": "ANALYTICSADMIN"
+    }
+  },
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_LOCAL": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_LOCAL",
+      "schema": "ANALYTICSADMIN"
+    }
+  },
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_MISC": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_MISC",
+      "schema": "ANALYTICSADMIN"
+    }
+  },
+  "QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_TRIP": {
+    "target": {
+      "object": "EMPLOYEE_DUPLICATES_TRIP",
+      "schema": "ANALYTICSADMIN"
+    }
+  }
+}
