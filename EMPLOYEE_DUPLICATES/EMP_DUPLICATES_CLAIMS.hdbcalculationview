@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="QA Reports.EMPLOYEE_DUPLICATES::EMP_DUPLICATES_CLAIMS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription=".hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_CLAIM">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_CLAIM</resourceUri>
+  </DataSource>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_FOOD">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_FOOD</resourceUri>
+  </DataSource>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_HOTEL">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_HOTEL</resourceUri>
+  </DataSource>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_LOCAL">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_LOCAL</resourceUri>
+  </DataSource>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_MISC">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_MISC</resourceUri>
+  </DataSource>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_TRIP">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_TRIP</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'CLAIM'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_CLAIM"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_FUNCTION"/>
+      <viewAttribute id="CLAIM_CREATEDATE"/>
+      <viewAttribute id="REFERENCEID"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="BILLAMOUNT"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="CITYGRADE"/>
+      <viewAttribute id="DAYS"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'FOOD'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_FOOD"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+    
+      <viewAttribute id="BILLAMOUNT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CREATED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSNAME" source="PROCESSNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REMARKS" source="REMARKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLCODEDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="BILLAMOUNT" null="true" value=""/>
+    </input>
+    <input node="Projection_2" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_FUNCTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CLAIM_CREATEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="REFERENCEID"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROCESSNAME" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REMARKS" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODEDESC" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_FUNCTION"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="HOTELREFID"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="HOTEL_START_DATE"/>
+      <viewAttribute id="HOTEL_END_DATE"/>
+      <viewAttribute id="BOARDINGAMOUNT"/>
+      <viewAttribute id="INCIDENTALS"/>
+      <viewAttribute id="TAX"/>
+      <viewAttribute id="LAUNDRYBASEAMT"/>
+      <viewAttribute id="LAUNDRYTAXAMT"/>
+      <viewAttribute id="FOODTOTALAMT"/>
+      <viewAttribute id="TOTAL"/>
+      <viewAttribute id="CLAIM_CREATEDATE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'HOTEL'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_HOTEL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+    
+      <viewAttribute id="BILLAMOUNT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Union_1" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CREATED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSNAME" source="PROCESSNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REMARKS" source="REMARKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLCODEDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+    <input node="Projection_3" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_FUNCTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CLAIM_CREATEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROCESSNAME" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLAIMAMOUNT" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REMARKS" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODEDESC" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLAIMAMT_BT" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TAXAMOUNT" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="BILLAMOUNT" null="true" value=""/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_FUNCTION"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="REFERENCEID"/>
+      <viewAttribute id="BILLNUM"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="BILLAMOUNT"/>
+      <viewAttribute id="CLAIMBEFORETAX"/>
+      <viewAttribute id="TAXAMT"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="MODEOFTRAVEL"/>
+      <viewAttribute id="CLAIM_CREATEDATE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'LOCAL'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_LOCAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_3">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+    
+      <viewAttribute id="BILLAMOUNT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Union_2" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CREATED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSNAME" source="PROCESSNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REMARKS" source="REMARKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLCODEDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+    <input node="Projection_4" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_FUNCTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CLAIM_CREATEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="REFERENCEID"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROCESSNAME" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REMARKS" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODEDESC" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLAIMAMT_BT" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_FUNCTION"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="REFERENCEID"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="BILLAMOUNT"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMT"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLDESC"/>
+      <viewAttribute id="CLAIM_CREATEDATE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'MISC'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_MISC"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_4">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+    
+      <viewAttribute id="BILLAMOUNT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Union_3" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CREATED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSNAME" source="PROCESSNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REMARKS" source="REMARKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLCODEDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+    <input node="Projection_5" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_FUNCTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CLAIM_CREATEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="REFERENCEID"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROCESSNAME" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REMARKS" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_FUNCTION"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="REFERENCEID"/>
+      <viewAttribute id="TRIPNO"/>
+      <viewAttribute id="FROMCITY"/>
+      <viewAttribute id="TOCITY"/>
+      <viewAttribute id="MODEOFTRAVEL"/>
+      <viewAttribute id="TRAVELTYPE"/>
+      <viewAttribute id="STARTDATE"/>
+      <viewAttribute id="ENDDATE"/>
+      <viewAttribute id="DAYS"/>
+      <viewAttribute id="BILLNO"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="BASEAMT"/>
+      <viewAttribute id="TAXAMT"/>
+      <viewAttribute id="TOTAL"/>
+      <viewAttribute id="CLAIM_CREATEDATE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INDICATOR" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'TRIP'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMPLOYEE_DUPLICATES_TRIP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_5">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+      <viewAttribute id="BILLAMOUNT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Union_4" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CREATED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="CLAIMID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSNAME" source="PROCESSNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMOUNT" source="CLAIMAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REMARKS" source="REMARKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODE" source="GLCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GLCODEDESC" source="GLCODEDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMAMT_BT" source="CLAIMAMT_BT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLAMOUNT" source="BILLAMOUNT"/>
+    </input>
+    <input node="Projection_6" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPCODE" source="EMPCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMP_NAME" source="EMP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_CODE" source="COMPANY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_GRADE" source="EMPLOYEE_GRADE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DESIGNATION" source="EMPLOYEE_DESIGNATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_DEPARTMENT" source="EMPLOYEE_FUNCTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="CLAIM_CREATEDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLAIMID" source="REFERENCEID"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROCESSNAME" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLNUMBER" source="BILLNO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLDATE" source="BILLDATE"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLAIMAMOUNT" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REMARKS" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GLCODEDESC" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLAIMAMT_BT" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DOC_ID" source="POSTING_DOC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HARDCOPY_INDICATOR" source="HARDCOPY_INDICATOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INDICATOR" source="INDICATOR"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="BILLAMOUNT" null="true" value=""/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_5">
+  <attributes>
+    <attribute id="EMPCODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPCODE"/>
+      <keyMapping columnObjectName="Union_5" columnName="EMPCODE"/>
+    </attribute>
+    <attribute id="EMP_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_NAME"/>
+      <keyMapping columnObjectName="Union_5" columnName="EMP_NAME"/>
+    </attribute>
+    <attribute id="COMPANY_CODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_CODE"/>
+      <keyMapping columnObjectName="Union_5" columnName="COMPANY_CODE"/>
+    </attribute>
+    <attribute id="EMPLOYEE_GRADE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_GRADE"/>
+      <keyMapping columnObjectName="Union_5" columnName="EMPLOYEE_GRADE"/>
+    </attribute>
+    <attribute id="EMPLOYEE_DESIGNATION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_DESIGNATION"/>
+      <keyMapping columnObjectName="Union_5" columnName="EMPLOYEE_DESIGNATION"/>
+    </attribute>
+    <attribute id="EMPLOYEE_DEPARTMENT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_DEPARTMENT"/>
+      <keyMapping columnObjectName="Union_5" columnName="EMPLOYEE_DEPARTMENT"/>
+    </attribute>
+    <attribute id="CREATED_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_DATE"/>
+      <keyMapping columnObjectName="Union_5" columnName="CREATED_DATE"/>
+    </attribute>
+    <attribute id="CLAIMID" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMID"/>
+      <keyMapping columnObjectName="Union_5" columnName="CLAIMID"/>
+    </attribute>
+    <attribute id="PROCESSNAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESSNAME"/>
+      <keyMapping columnObjectName="Union_5" columnName="PROCESSNAME"/>
+    </attribute>
+    <attribute id="BILLNUMBER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLNUMBER"/>
+      <keyMapping columnObjectName="Union_5" columnName="BILLNUMBER"/>
+    </attribute>
+    <attribute id="BILLDATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLDATE"/>
+      <keyMapping columnObjectName="Union_5" columnName="BILLDATE"/>
+    </attribute>
+    <attribute id="CLAIMAMOUNT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMAMOUNT"/>
+      <keyMapping columnObjectName="Union_5" columnName="CLAIMAMOUNT"/>
+    </attribute>
+    <attribute id="REMARKS" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REMARKS"/>
+      <keyMapping columnObjectName="Union_5" columnName="REMARKS"/>
+    </attribute>
+    <attribute id="GLCODE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GLCODE"/>
+      <keyMapping columnObjectName="Union_5" columnName="GLCODE"/>
+    </attribute>
+    <attribute id="GLCODEDESC" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GLCODEDESC"/>
+      <keyMapping columnObjectName="Union_5" columnName="GLCODEDESC"/>
+    </attribute>
+    <attribute id="CLAIMAMT_BT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMAMT_BT"/>
+      <keyMapping columnObjectName="Union_5" columnName="CLAIMAMT_BT"/>
+    </attribute>
+    <attribute id="TAXAMOUNT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAXAMOUNT"/>
+      <keyMapping columnObjectName="Union_5" columnName="TAXAMOUNT"/>
+    </attribute>
+    <attribute id="POSTING_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DATE"/>
+      <keyMapping columnObjectName="Union_5" columnName="POSTING_DATE"/>
+    </attribute>
+    <attribute id="POSTING_DOC_ID" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DOC_ID"/>
+      <keyMapping columnObjectName="Union_5" columnName="POSTING_DOC_ID"/>
+    </attribute>
+    <attribute id="HARDCOPY_INDICATOR" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HARDCOPY_INDICATOR"/>
+      <keyMapping columnObjectName="Union_5" columnName="HARDCOPY_INDICATOR"/>
+    </attribute>
+    <attribute id="INDICATOR" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INDICATOR"/>
+      <keyMapping columnObjectName="Union_5" columnName="INDICATOR"/>
+    </attribute>
+    <attribute id="BILLAMOUNT" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLAMOUNT"/>
+      <keyMapping columnObjectName="Union_5" columnName="BILLAMOUNT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="extra" order="23" aggregationType="count" measureType="simple" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+      <formula>NULL</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="660.3038801290666" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="916.9999940395355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="916.9999940395355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="false" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118.66666666666663" y="776.9999952316284"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="380.18794682697023" y="776.9999952316284"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="145.33333333333337" y="636.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="474.7983235081821" y="636.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="172" y="496.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="584.5795303100989" y="496.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="198.66666666666663" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="708.3361339234377" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="660.3038801290664" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
