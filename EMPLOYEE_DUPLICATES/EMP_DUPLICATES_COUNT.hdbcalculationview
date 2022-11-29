@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="QA Reports.EMPLOYEE_DUPLICATES::EMP_DUPLICATES_COUNT" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="EMP_DUPLICATES_COUNT.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="QA Reports.EMPLOYEE_DUPLICATES::EMP_DUPLICATES_CLAIMS">
+    <resourceUri>QA Reports.EMPLOYEE_DUPLICATES::EMP_DUPLICATES_CLAIMS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPCODE"/>
+      <viewAttribute id="EMP_NAME"/>
+      <viewAttribute id="COMPANY_CODE"/>
+      <viewAttribute id="EMPLOYEE_GRADE"/>
+      <viewAttribute id="EMPLOYEE_DESIGNATION"/>
+      <viewAttribute id="EMPLOYEE_DEPARTMENT"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CLAIMID"/>
+      <viewAttribute id="PROCESSNAME"/>
+      <viewAttribute id="BILLNUMBER"/>
+      <viewAttribute id="BILLDATE"/>
+      <viewAttribute id="CLAIMAMOUNT"/>
+      <viewAttribute id="REMARKS"/>
+      <viewAttribute id="GLCODE"/>
+      <viewAttribute id="GLCODEDESC"/>
+      <viewAttribute id="CLAIMAMT_BT"/>
+      <viewAttribute id="TAXAMOUNT"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="POSTING_DOC_ID"/>
+      <viewAttribute id="HARDCOPY_INDICATOR"/>
+      <viewAttribute id="INDICATOR"/>
+      <viewAttribute id="BILLAMOUNT"/>
+      <viewAttribute id="extra"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="EMP_CODE_BILL_NUMBER_BILL_DATE" datatype="NVARCHAR" length="40" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;EMPCODE&quot;, &quot;BILLNUMBER&quot;),&quot;BILLDATE&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="EMP_CODE_BILL_DATE_CLAIM_AMOUNT" datatype="NVARCHAR" length="40" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;EMPCODE&quot;, &quot;BILLDATE&quot;),&quot;CLAIMAMOUNT&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT" datatype="NVARCHAR" length="40" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;EMPCODE&quot;, &quot;BILLNUMBER&quot;),&quot;CLAIMAMOUNT&quot;)
+</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="BILL_NUMBER_BILL_DATE_BILL_AMOUNT" datatype="NVARCHAR" length="40" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;BILLNUMBER&quot;, &quot;BILLDATE&quot;),&quot;BILLAMOUNT&quot;)
+</formula>
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="BILL_NUMBER_BILL_AMOUNT" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+    
+        <formula>CONCAT(&quot;BILLNUMBER&quot;, &quot;BILLAMOUNT&quot;)</formula>
+    
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="BILL_DATE_BILL_AMOUNT" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CONCAT(&quot;BILLDATE&quot;, &quot;BILLAMOUNT&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="EMP_CODE_BILL_AMOUNT" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CONCAT(&quot;EMPCODE&quot;, &quot;BILLAMOUNT&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="QA Reports.EMPLOYEE_DUPLICATES::EMP_DUPLICATES_CLAIMS"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="EMPCODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPCODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPCODE"/>
+    </attribute>
+    <attribute id="EMP_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMP_NAME"/>
+    </attribute>
+    <attribute id="COMPANY_CODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COMPANY_CODE"/>
+    </attribute>
+    <attribute id="EMPLOYEE_GRADE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_GRADE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEE_GRADE"/>
+    </attribute>
+    <attribute id="EMPLOYEE_DESIGNATION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_DESIGNATION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEE_DESIGNATION"/>
+    </attribute>
+    <attribute id="EMPLOYEE_DEPARTMENT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_DEPARTMENT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEE_DEPARTMENT"/>
+    </attribute>
+    <attribute id="CREATED_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CREATED_DATE"/>
+    </attribute>
+    <attribute id="CLAIMID" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLAIMID"/>
+    </attribute>
+    <attribute id="PROCESSNAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESSNAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PROCESSNAME"/>
+    </attribute>
+    <attribute id="BILLNUMBER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLNUMBER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILLNUMBER"/>
+    </attribute>
+    <attribute id="BILLDATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLDATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILLDATE"/>
+    </attribute>
+    <attribute id="CLAIMAMOUNT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMAMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLAIMAMOUNT"/>
+    </attribute>
+    <attribute id="REMARKS" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REMARKS"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REMARKS"/>
+    </attribute>
+    <attribute id="GLCODE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GLCODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="GLCODE"/>
+    </attribute>
+    <attribute id="GLCODEDESC" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GLCODEDESC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="GLCODEDESC"/>
+    </attribute>
+    <attribute id="CLAIMAMT_BT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLAIMAMT_BT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLAIMAMT_BT"/>
+    </attribute>
+    <attribute id="TAXAMOUNT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAXAMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TAXAMOUNT"/>
+    </attribute>
+    <attribute id="POSTING_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="POSTING_DATE"/>
+    </attribute>
+    <attribute id="POSTING_DOC_ID" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DOC_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="POSTING_DOC_ID"/>
+    </attribute>
+    <attribute id="HARDCOPY_INDICATOR" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HARDCOPY_INDICATOR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="HARDCOPY_INDICATOR"/>
+    </attribute>
+    <attribute id="INDICATOR" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INDICATOR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="INDICATOR"/>
+    </attribute>
+    <attribute id="BILLAMOUNT" order="22" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLAMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILLAMOUNT"/>
+    </attribute>
+  
+    <attribute id="EMP_CODE_BILL_NUMBER_BILL_DATE" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_CODE_BILL_NUMBER_BILL_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMP_CODE_BILL_NUMBER_BILL_DATE"/>
+    </attribute>
+    <attribute id="EMP_CODE_BILL_DATE_CLAIM_AMOUNT" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_CODE_BILL_DATE_CLAIM_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMP_CODE_BILL_DATE_CLAIM_AMOUNT"/>
+    </attribute>
+    <attribute id="EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT"/>
+    </attribute>
+    <attribute id="BILL_NUMBER_BILL_DATE_BILL_AMOUNT" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILL_NUMBER_BILL_DATE_BILL_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILL_NUMBER_BILL_DATE_BILL_AMOUNT"/>
+    </attribute>
+    <attribute id="BILL_NUMBER_BILL_AMOUNT" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILL_NUMBER_BILL_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILL_NUMBER_BILL_AMOUNT"/>
+    </attribute>
+    <attribute id="BILL_DATE_BILL_AMOUNT" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILL_DATE_BILL_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BILL_DATE_BILL_AMOUNT"/>
+    </attribute>
+    <attribute id="EMP_CODE_BILL_AMOUNT" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_CODE_BILL_AMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMP_CODE_BILL_AMOUNT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="COUNT_OF_EMP_CODE_BILL_NUMBER_BILL_DATE" order="30" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="BIGINT" length="">
+      <descriptions defaultDescription="COUNT_OF_EMP_CODE_BILL_NUMBER_BILL_DATE"/>
+      <exceptionAggregation>
+        <attribute attributeName="EMP_CODE_BILL_NUMBER_BILL_DATE"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="COUNT_OF_EMP_CODE_BILL_DATE_CLAIM_AMOUNT" order="31" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="BIGINT" length="">
+      <descriptions defaultDescription="COUNT_OF_EMP_CODE_BILL_DATE_CLAIM_AMOUNT"/>
+      <exceptionAggregation>
+        <attribute attributeName="EMP_CODE_BILL_DATE_CLAIM_AMOUNT"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="COUNT_OF_EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT" order="32" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="BIGINT" length="">
+      <descriptions defaultDescription="COUNT_OF_EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT"/>
+      <exceptionAggregation>
+        <attribute attributeName="EMP_CODE_BILL_NUMBER_CLAIM_AMOUNT"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="COUNT_OF_BILL_NUMBER_BILL_DATE_BILL_AMOUNT" order="33" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="BIGINT" length="">
+      <descriptions defaultDescription="COUNT_OF_BILL_NUMBER_BILL_DATE_BILL_AMOUNT"/>
+      <exceptionAggregation>
+        <attribute attributeName="BILL_NUMBER_BILL_DATE_BILL_AMOUNT"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-17" y="215"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
